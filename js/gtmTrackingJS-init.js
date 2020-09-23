@@ -26,6 +26,11 @@ $(window).ready(function (){
                     // Verifico e invio il dataLayer corretto
                     for (var i in GtmTrackConfig) {
 
+                        /**
+                         * Verifico:
+                         * A
+                         * href
+                         */
                         if (e.data.type == 'a' &&
                             typeof e.data.attrNameCtrl !== 'undefined' &&
                             typeof GtmTrackConfig[i].attrValueCtrl !== 'undefined' &&
@@ -35,7 +40,11 @@ $(window).ready(function (){
                             break;
 
                         }
-                        
+
+                        /**
+                         * Verifico:
+                         * che il testo all'interno dell'elemento sia presente
+                         */
                         if (typeof e.data.searchString !== 'undefined' &&
                             typeof e.data.searchUrl === 'undefined' &&
                             $(this).text().indexOf(GtmTrackConfig[i].searchString) > -1) {
@@ -45,6 +54,11 @@ $(window).ready(function (){
 
                         }
 
+                        /**
+                         * Verifico:
+                         * che il testo all'interno dell'elemento sia presente
+                         * e che l'URL abbia una string searchUrl
+                         */
                         if (typeof e.data.searchString !== 'undefined' &&
                             typeof e.data.searchUrl !== 'undefined' &&
                             $(this).text().indexOf(GtmTrackConfig[i].searchString) > -1 &&
