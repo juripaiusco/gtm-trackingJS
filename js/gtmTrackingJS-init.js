@@ -35,10 +35,21 @@ $(window).ready(function (){
                             break;
 
                         }
+                        
+                        if (typeof e.data.searchString !== 'undefined' &&
+                            typeof e.data.searchUrl === 'undefined' &&
+                            $(this).text().indexOf(GtmTrackConfig[i].searchString) > -1) {
+
+                            pushDataLayer(GtmTrackConfig[i]);
+                            break;
+
+                        }
 
                         if (typeof e.data.searchString !== 'undefined' &&
-                            $(this).text().indexOf(GtmTrackConfig[i].searchString) > -1) {
-                            
+                            typeof e.data.searchUrl !== 'undefined' &&
+                            $(this).text().indexOf(GtmTrackConfig[i].searchString) > -1 &&
+                            location.href.indexOf(GtmTrackConfig[i].searchUrl) > -1) {
+
                             pushDataLayer(GtmTrackConfig[i]);
                             break;
 
