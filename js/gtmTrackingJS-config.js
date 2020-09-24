@@ -52,4 +52,36 @@ var GtmTrackConfig = [{
         'label'     : 'Click Me 3'
     }
 
+}, {
+
+    'selector': 'button',
+    'listener': 'click',
+    'type': 'button',
+
+    'searchString': 'Continue',
+    'searchUrl': 'continue-1',
+
+    'dataLayer': {
+        'event'     : 'mrj.bClick',
+        'category'  : '00_BTN_continue',
+        'action'    : 'click',
+        'label'     : 'Continue 1'
+    }
+
+}, {
+
+    'selector': 'button',
+    'listener': 'click',
+    'type': 'button',
+
+    'searchString': 'Continue',
+    'searchUrl': 'continue-2',
+
+    'dataLayer': {
+        'event'     : 'mrj.bClick',
+        'category'  : '00_BTN_continue',
+        'action'    : 'click',
+        'label'     : 'Continue 2'
+    }
+
 }];

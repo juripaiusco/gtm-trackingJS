@@ -24,6 +24,8 @@ $(window).ready(function (){
                 function (e) {
 
                     // Verifico e invio il dataLayer corretto
+                    var binded = 0;
+
                     for (var i in GtmTrackConfig) {
 
                         /**
@@ -32,9 +34,9 @@ $(window).ready(function (){
                          * href
                          */
                         if (e.data.type == 'a' &&
-                            typeof e.data.attrNameCtrl !== 'undefined' &&
+                            typeof GtmTrackConfig[i].attrNameCtrl !== 'undefined' &&
                             typeof GtmTrackConfig[i].attrValueCtrl !== 'undefined' &&
-                            $(this).attr(e.data.attrNameCtrl) == GtmTrackConfig[i].attrValueCtrl) {
+                            $(this).attr(GtmTrackConfig[i].attrNameCtrl) == GtmTrackConfig[i].attrValueCtrl) {
 
                             pushDataLayer(GtmTrackConfig[i]);
                             break;
@@ -45,8 +47,8 @@ $(window).ready(function (){
                          * Verifico:
                          * che il testo all'interno dell'elemento sia presente
                          */
-                        if (typeof e.data.searchString !== 'undefined' &&
-                            typeof e.data.searchUrl === 'undefined' &&
+                        if (typeof GtmTrackConfig[i].searchString !== 'undefined' &&
+                            typeof GtmTrackConfig[i].searchUrl === 'undefined' &&
                             $(this).text().indexOf(GtmTrackConfig[i].searchString) > -1) {
 
                             pushDataLayer(GtmTrackConfig[i]);
@@ -59,15 +61,13 @@ $(window).ready(function (){
                          * che il testo all'interno dell'elemento sia presente
                          * e che l'URL abbia una string searchUrl
                          */
-                        if (typeof e.data.searchString !== 'undefined' &&
-                            typeof e.data.searchUrl !== 'undefined' &&
-                            $(this).text().indexOf(GtmTrackConfig[i].searchString) > -1 &&
+                        /*if ($(this).text().indexOf(GtmTrackConfig[i].searchString) > -1 &&
                             location.href.indexOf(GtmTrackConfig[i].searchUrl) > -1) {
 
                             pushDataLayer(GtmTrackConfig[i]);
                             break;
 
-                        }
+                        }*/
 
                     }
 

@@ -66,6 +66,36 @@
 
         </div>
 
+        <br><hr>
+
+        <br>
+
+        <div class="row">
+
+            <div class="col-lg-3">
+
+                <button class="btn btn-primary btn-block" type="button">
+                    <span>Continue</span>
+                </button>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <div class="row">
+
+            <div class="col-lg-3">
+
+                <button class="btn btn-primary btn-block" type="button">
+                    <span>Continue</span>
+                </button>
+
+            </div>
+
+        </div>
+
     </div>
 
     <!-- Optional JavaScript -->
