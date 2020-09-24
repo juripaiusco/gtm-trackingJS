@@ -22,6 +22,10 @@
 
         <br><br>
 
+        <h1>Example page</h1>
+
+        <hr><br>
+
         <div class="row">
 
             <div class="col-lg-3">
