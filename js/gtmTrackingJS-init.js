@@ -24,7 +24,6 @@ $(window).ready(function (){
                 function (e) {
 
                     // Verifico e invio il dataLayer corretto
-
                     for (var i in GtmTrackConfig) {
 
                         /**
