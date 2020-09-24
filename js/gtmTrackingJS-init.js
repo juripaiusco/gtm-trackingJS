@@ -12,67 +12,41 @@ $(window).ready(function (){
     // Ciclo tutti gli elementi che voglio tracciare
     for (var i in GtmTrackConfig) {
 
-        // Verifico che il selettore sia tracciato una volta sola
-        if (selectorListener.indexOf(GtmTrackConfig[i].selector) < 0) {
+        $(GtmTrackConfig[i].selector).bind(
+            GtmTrackConfig[i].listener,
+            GtmTrackConfig[i],
+            function (e) {
 
-            selectorListener.push(GtmTrackConfig[i].selector);
+                if (e.data.type == 'a' &&
+                    e.data.attrNameCtrl !== 'undefined' &&
+                    e.data.attrValueCtrl !== 'undefined' &&
+                    $(this).attr(e.data.attrNameCtrl) == e.data.attrValueCtrl) {
 
-            // Traccio il selettore
-            $(GtmTrackConfig[i].selector).bind(
-                GtmTrackConfig[i].listener,
-                GtmTrackConfig[i],
-                function (e) {
-
-                    // Verifico e invio il dataLayer corretto
-                    for (var i in GtmTrackConfig) {
-
-                        /**
-                         * Verifico:
-                         * A
-                         * href
-                         */
-                        if (e.data.type == 'a' &&
-                            typeof GtmTrackConfig[i].attrNameCtrl !== 'undefined' &&
-                            typeof GtmTrackConfig[i].attrValueCtrl !== 'undefined' &&
-                            $(this).attr(GtmTrackConfig[i].attrNameCtrl) == GtmTrackConfig[i].attrValueCtrl) {
-
-                            pushDataLayer(GtmTrackConfig[i]);
-                            break;
-
-                        }
-
-                        /**
-                         * Verifico:
-                         * che il testo all'interno dell'elemento sia presente
-                         */
-                        if (typeof GtmTrackConfig[i].searchString !== 'undefined' &&
-                            typeof GtmTrackConfig[i].searchUrl === 'undefined' &&
-                            $(this).text().indexOf(GtmTrackConfig[i].searchString) > -1) {
-
-                            pushDataLayer(GtmTrackConfig[i]);
-                            break;
-
-                        }
-
-                        /**
-                         * Verifico:
-                         * che il testo all'interno dell'elemento sia presente
-                         * e che l'URL abbia una string searchUrl
-                         */
-                        /*if ($(this).text().indexOf(GtmTrackConfig[i].searchString) > -1 &&
-                            location.href.indexOf(GtmTrackConfig[i].searchUrl) > -1) {
-
-                            pushDataLayer(GtmTrackConfig[i]);
-                            break;
-
-                        }*/
-
-                    }
+                    pushDataLayer(e.data);
 
                 }
-            );
 
-        }
+                if (e.data.type == 'button' &&
+                    e.data.searchString !== 'undefined' &&
+                    !e.data.searchUrl &&
+                    $(this).text().indexOf(e.data.searchString) > -1) {
+
+                    pushDataLayer(e.data);
+
+                }
+
+                if (e.data.type == 'button' &&
+                    e.data.searchString !== 'undefined' &&
+                    e.data.searchUrl !== 'undefined' &&
+                    $(this).text().indexOf(e.data.searchString) > -1 &&
+                    location.href.indexOf(e.data.searchUrl) > -1) {
+
+                    pushDataLayer(e.data);
+
+                }
+
+            }
+        );
 
     }
 
