@@ -5,15 +5,15 @@
  * Email: juri@mr-j.it
  */
 window.dataLayer = window.dataLayer || [];
-selectorListener = [];
 
 $(window).ready(function (){
 
     // Ciclo tutti gli elementi che voglio tracciare
     for (var i in GtmTrackConfig) {
 
-        $(GtmTrackConfig[i].selector).bind(
+        $('body').on(
             GtmTrackConfig[i].listener,
+            GtmTrackConfig[i].selector,
             GtmTrackConfig[i],
             function (e) {
 
