@@ -58,11 +58,32 @@ $(window).ready(function (){
  */
 var pushDataLayer = function (d) {
 
+    var label = d.dataLayer.label;
+
+    if (d.dataLayer.label.search(/\[/i) > -1 ||
+        d.dataLayer.label.search(/\./i) > -1) {
+
+        label = $(d.dataLayer.label).val();
+
+        // Nel caso in cui si vogliano tracciare dati personalizzati tramite FB Pixel
+        // fbq('trackCustom');
+        // console.log(document.querySelector(d.dataLayer.label).value);
+
+    }
+
+    if (!label) {
+
+        label = $(d.dataLayer.label).text().trim();
+
+        // console.log(document.querySelector(d.dataLayer.label).innerHTML.trim().replace('€', '').replace(',', '.'));
+
+    }
+
     window.dataLayer.push({
         'event' : d.dataLayer.event,
         'mrj.category' : d.dataLayer.category,
         'mrj.action' : d.dataLayer.action,
-        'mrj.label' : d.dataLayer.label
+        'mrj.label' : label
     });
 
     console.log(window.dataLayer);

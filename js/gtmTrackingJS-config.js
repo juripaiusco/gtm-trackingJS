@@ -58,6 +58,38 @@ var GtmTrackConfig = [{
     'listener': 'click',
     'type': 'button',
 
+    'searchString': 'Click Me 3',
+    'searchUrl': 'click-me-2',
+
+    'dataLayer': {
+        'event'     : 'mrj.bClick',
+        'category'  : '01_IN_form',
+        'action'    : 'input',
+        'label'     : '[name="input-value"]'
+    }
+
+}, {
+
+    'selector': 'button',
+    'listener': 'click',
+    'type': 'button',
+
+    'searchString': 'Click Me 3',
+    'searchUrl': 'click-me-2',
+
+    'dataLayer': {
+        'event'     : 'mrj.bClick',
+        'category'  : '01_DIV_form',
+        'action'    : 'view',
+        'label'     : 'div.price'
+    }
+
+}, {
+
+    'selector': 'button',
+    'listener': 'click',
+    'type': 'button',
+
     'searchString': 'Continue',
     'searchUrl': 'continue-1',
 

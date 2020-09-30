@@ -64,6 +64,24 @@
 
             </div>
 
+            <div class="col-lg-3">
+
+                <input class="form-control"
+                       name="input-value"
+                       type="text"
+                       placeholder="Seleziona i beneficiari"
+                       value="12345">
+
+            </div>
+
+            <div class="col-lg-3">
+
+                <div class="btn btn-primary price" id="price">
+                    3,06 €
+                </div>
+
+            </div>
+
         </div>
 
         <br><hr>
